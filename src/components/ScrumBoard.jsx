@@ -13,7 +13,7 @@ import {
   verticalListSortingStrategy,
   useSortable
 } from '@dnd-kit/sortable'
-import { CSS } from '@dnd-kit/utilities'
+import { CSS} from '@dnd-kit/utilities'
 import StoryCard from './StoryCard.jsx'
 import StoryModal from './StoryModal.jsx'
 import { addStory, updateStory, deleteStory } from '../firebase.js'
@@ -21,11 +21,11 @@ import { addStory, updateStory, deleteStory } from '../firebase.js'
 const COLUMNS = ['Backlog', 'Sprint Planning', 'In Progress', 'Review', 'Done']
 
 const COL_ACCENT = {
-  'Backlog':         'var(--text-muted)',
+  'Backlog':          'var(--text-muted)',
   'Sprint Planning': 'var(--jorge)',
-  'In Progress':     'var(--wife)',
-  'Review':          'var(--sprint)',
-  'Done':            'var(--family)'
+  'In Progress':      'var(--wife)',
+  'Review':           'var(--sprint)',
+  'Done':             'var(--family)'
 }
 
 // ── Sortable Card wrapper ─────────────────────────────────────────
