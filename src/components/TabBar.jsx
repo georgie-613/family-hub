@@ -1,12 +1,13 @@
 import React from 'react'
 
+// Icons — inline SVG for zero bundle overhead
 function CalendarIcon({ active }) {
   const col = active ? 'var(--tab-calendar)' : 'var(--text-muted)'
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={col} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <rect x="3" y="4" width="18" height="18" rx="2"/>
       <line x1="16" y1="2" x2="16" y2="6"/>
-      <line x1="8"  y1="2" x2="8"  yR="6"/>
+      <line x1="8"  y1="2" x2="8"  y2="6"/>
       <line x1="3"  y1="10" x2="21" y2="10"/>
     </svg>
   )
@@ -67,12 +68,25 @@ export default function TabBar({ activeTab, setActiveTab, tabs }) {
         const active  = activeTab === tab.id
         const accent  = ACCENT_MAP[tab.id]
         return (
-          <button key={tab.id} onClick={() => setActiveTab(tab.id)} style={{...styles.tab, color: active ? accent : 'var(--text-muted)'}} aria-label={tab.label} aria-current={active ? 'page' : undefined}>
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            style={{
+              ...styles.tab,
+              color: active ? accent : 'var(--text-muted)'
+            }}
+            aria-label={tab.label}
+            aria-current={active ? 'page' : undefined}
+          >
             <span style={styles.iconWrap}>
-              {active && <span style={{...styles.activeDot, background: accent}} />}
+              {active && <span style={{ ...styles.activeDot, background: accent }} />}
               <Icon active={active} />
             </span>
-            <span style={{...styles.label, color: active ? accent : 'var(--text-muted)', fontWeight: active ? 600 : 500}}>
+            <span style={{
+              ...styles.label,
+              color: active ? accent : 'var(--text-muted)',
+              fontWeight: active ? 600 : 500
+            }}>
               {tab.label}
             </span>
           </button>
@@ -83,9 +97,51 @@ export default function TabBar({ activeTab, setActiveTab, tabs }) {
 }
 
 const styles = {
-  nav: { position: 'fixed', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: 600, display: 'flex', height: 64, paddingBottom: 'env(safe-area-inset-bottom)', background: 'var(--bg-card)', borderTop: '1px solid var(--border)', zIndex: 50 },
-  tab: { flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 3, minHeight: 44, background: 'none', border: 'none', cursor: 'pointer', padding: '8px 4px 4px', transition: 'color 0.15s', WebkitTapHighlightColor: 'transparent' },
-  iconWrap: { position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' },
-  activeDot: { position: 'absolute', top: -6, width: 4, height: 4, borderRadius: '50%' },
-  label: { fontSize: 10, letterSpacing: '0.04em', textTransform: 'uppercase', transition: 'color 0.15s' }
+  nav: {
+    position: 'fixed',
+    bottom: 0,
+    left: '50%',
+    transform: 'translateX(-50%)',
+    width: '100%',
+    maxWidth: 600,
+    display: 'flex',
+    height: 64,
+    paddingBottom: 'env(safe-area-inset-bottom)',
+    background: 'var(--bg-card)',
+    borderTop: '1px solid var(--border)',
+    zIndex: 50
+  },
+  tab: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 3,
+    minHeight: 44,
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    padding: '8px 4px 4px',
+    transition: 'color 0.15s',
+    WebkitTapHighlightColor: 'transparent'
+  },
+  iconWrap: {
+    position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  activeDot: {
+    position: 'absolute',
+    top: -6,
+    width: 4, height: 4,
+    borderRadius: '50%'
+  },
+  label: {
+    fontSize: 10,
+    letterSpacing: '0.04em',
+    textTransform: 'uppercase',
+    transition: 'color 0.15s'
+  }
 }
